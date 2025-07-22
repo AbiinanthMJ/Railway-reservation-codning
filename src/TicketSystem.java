@@ -53,8 +53,54 @@ public class TicketSystem {
                   racpassenger.allotedberth=allocatedberth;
                   confirmedtickets.add(racpassenger);
                   availableberths.remove(allocatedberth);
-                  availableberths.remove(allocatedberth);
               }
+              if(!waitinglist.isEmpty()){
+                  passenger waitinglistpassenger=waitinglist.poll();
+                  waitinglistpassenger.allotedberth="RAC";
+                  System.out.println("Waiting list ticket moved to RAC"+waitinglistpassenger);
+              }
+        }
+        else{
+            System.out.println("no ticket found with the matching id ");
+        }
+        System.out.println("Ticket cancelled for the Ticket Id "+ticketid);
+    }
+    public void printBookedTickets(){
+        if(confirmedtickets.isEmpty()){
+            System.out.println("No ticket has been Booked till now");
+        }
+        else{
+            System.out.println("Confirmed tickets");
+            for( passenger passenger : confirmedtickets){
+                System.out.println(passenger);
+            }
+        }
+    }
+    public void printAvailableTicket(){
+        System.out.println("Available Berths"+availableberths.size());
+        System.out.println("Available RAC tickets"+(1- rac.size()));
+        System.out.println("Avaiblable Waiting list ticksts"+(1- waitinglist.size()));
+    }
+    public void printractickets(){
+        if(rac.isEmpty()){
+            System.out.println("No rac ticket has been booked till now");
+        }
+        else{
+            System.out.println(" RAC tickets");
+            for(passenger passenger : rac){
+                System.out.println(passenger);
+            }
+        }
+    }
+    public void viewWaitingListTickets(){
+        if(waitinglist.isEmpty()){
+            System.out.println("No ticket is in waiting List");
+        }
+        else{
+            System.out.println("Tickets thats in waiting List");
+            for(passenger passenger : waitinglist){
+                System.out.println(passenger);
+            }
         }
     }
 
